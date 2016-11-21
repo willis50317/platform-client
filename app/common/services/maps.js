@@ -230,6 +230,7 @@ function (
             this.clearOldMarkers()
                 .then(_.partial(this.setGeojsonLayer, posts))
                 .then(this.addNewMarkers)
+                .then(this.addNewRoutes)
                 ;
         },
         setGeojsonLayer: function (posts) {
@@ -292,9 +293,22 @@ function (
                     }
                 });
             }, this));
+        },
+        addNewRoutes: function () {
+            this.map().then(function (map) {
+                var routingCtrl = null;
+                routingCtrl = L.Routing.control({
+                    waypoints: [
+                    // Where can I get points?
+                        L.latLng(25.05, 121.53),
+                        L.latLng(25.05, 121.61)
+                        //L.latLng(25.05, 121.53)
+                    ]
+                }).addTo(map);
+                routingCtrl.hide();
+            });
         }
     };
-
     Util.bindAllFunctionsToSelf(Map);
     return Util.bindAllFunctionsToSelf(Maps);
 
