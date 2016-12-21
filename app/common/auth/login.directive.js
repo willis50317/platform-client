@@ -68,7 +68,8 @@ function LoginController(
 
         Authentication
             .login(email, password)
-            .then(finishedLogin, clearLoginForm);
+            .then(finishedLogin, clearLoginForm)
+            .openLogin();
     }
 
     function forgotPassword() {
