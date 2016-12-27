@@ -10,7 +10,12 @@
     </button>
 
     <ul class="fab-options" ng-show="fabToggle" ng-class="{ 'active': fabToggle }" ng-style="fabOptionsStyle" data-toggle-animate="flex">
-        <li ng-repeat="form in forms">
+        <li ng-repeat="form in forms | orderBy:'id':true">
+        <!--
+            ng-repeat
+            orderBy:'id':true => run by reverse order of 'id'
+            limitTo: x => run x times
+        -->
             <a ng-href="/posts/create/{{form.id}}">
                 <span class="fab-action-type" style="background-color: {{form.color}};">
                     <svg class="iconic">

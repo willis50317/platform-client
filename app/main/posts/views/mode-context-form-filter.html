@@ -1,6 +1,11 @@
 <form class="survey-filter">
 
-    <div class="survey-filter-checkbox init" ng-class="{ checked : (filters.form.indexOf(form.id) !== -1) }" ng-repeat="form in forms" dropdown>
+    <div class="survey-filter-checkbox init" ng-class="{ checked : (filters.form.indexOf(form.id) !== -1) }" ng-repeat="form in forms | orderBy:'id':true" dropdown>
+    <!--
+        ng-repeat
+        orderBy:'id':true => run by reverse order of 'id'
+        limitTo: x => run x times
+    -->
         <div class="survey-filter-label">
             <span class="post-band" style="background-color: {{form.color}};"></span>
             <label class="checked">
